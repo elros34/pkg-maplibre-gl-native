@@ -68,8 +68,8 @@ mkdir -p %{buildroot}
 
 %files devel
 %{_includedir}/mbgl
-%{_includedir}/qt5/Q*Mapbox*
-%{_includedir}/qt5/qmapbox*
+%{_includedir}/Q*Mapbox*
+%{_includedir}/qmapbox*
 %{_libdir}/libQMapboxGL.so
 %{_libdir}/cmake/qmapboxgl
 
