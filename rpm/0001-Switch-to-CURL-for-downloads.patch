@@ -1,0 +1,37 @@
+From 3e6635c85b1ee83474d2514baf40e1b4079522b4 Mon Sep 17 00:00:00 2001
+From: Rinigus <rinigus.git@gmail.com>
+Date: Sun, 5 Dec 2021 14:54:48 +0200
+Subject: [PATCH] Switch to CURL for downloads
+
+As Qt 5.6 does not allow to download tiles offline from localhost,
+replace qt http with curl implementation
+---
+ platform/qt/qt.cmake | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/platform/qt/qt.cmake b/platform/qt/qt.cmake
+index 6303ae758..d2f7abe72 100644
+--- a/platform/qt/qt.cmake
++++ b/platform/qt/qt.cmake
+@@ -94,10 +94,6 @@ target_sources(
+         ${PROJECT_SOURCE_DIR}/platform/qt/src/async_task_impl.hpp
+         ${PROJECT_SOURCE_DIR}/platform/qt/src/number_format.cpp
+         ${PROJECT_SOURCE_DIR}/platform/qt/src/gl_functions.cpp
+-        $<$<BOOL:${MBGL_PUBLIC_BUILD}>:${PROJECT_SOURCE_DIR}/platform/qt/src/http_file_source.cpp>
+-        $<$<BOOL:${MBGL_PUBLIC_BUILD}>:${PROJECT_SOURCE_DIR}/platform/qt/src/http_file_source.hpp>
+-        $<$<BOOL:${MBGL_PUBLIC_BUILD}>:${PROJECT_SOURCE_DIR}/platform/qt/src/http_request.cpp>
+-        $<$<BOOL:${MBGL_PUBLIC_BUILD}>:${PROJECT_SOURCE_DIR}/platform/qt/src/http_request.hpp>
+         ${PROJECT_SOURCE_DIR}/platform/qt/src/local_glyph_rasterizer.cpp
+         ${PROJECT_SOURCE_DIR}/platform/qt/src/qt_image.cpp
+         ${PROJECT_SOURCE_DIR}/platform/qt/src/qt_logging.cpp
+@@ -109,6 +105,7 @@ target_sources(
+         ${PROJECT_SOURCE_DIR}/platform/qt/src/timer.cpp
+         ${PROJECT_SOURCE_DIR}/platform/qt/src/timer_impl.hpp
+         ${PROJECT_SOURCE_DIR}/platform/qt/src/utf.cpp
++	$<$<BOOL:${MBGL_PUBLIC_BUILD}>:${PROJECT_SOURCE_DIR}/platform/default/src/mbgl/storage/http_file_source.cpp>
+ )
+ 
+ if(MBGL_WITH_QT_HEADLESS OR NOT MBGL_QT_LIBRARY_ONLY)
+-- 
+2.32.0
+

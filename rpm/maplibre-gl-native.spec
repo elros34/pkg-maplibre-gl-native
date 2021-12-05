@@ -7,6 +7,7 @@ Group: Libraries/Geosciences
 URL: https://github.com/maplibre/maplibre-gl-native
 
 Source: %{name}-%{version}.tar.gz
+Patch1: 0001-Switch-to-CURL-for-downloads.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
@@ -41,6 +42,7 @@ This package contains the development headers for %{name}.
 
 %prep
 %setup -q -n %{name}-%{version}/maplibre-gl-native
+%patch1 -p1
 
 %build
 %cmake -DMBGL_WITH_QT=ON -DMBGL_WITH_WERROR=OFF -DCMAKE_INSTALL_PREFIX:PATH=/usr -DMBGL_WITH_QT_HEADLESS=OFF -DMBGL_QT_LIBRARY_ONLY=ON .
