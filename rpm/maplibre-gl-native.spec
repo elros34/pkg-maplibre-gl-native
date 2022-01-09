@@ -71,7 +71,7 @@ mkdir -p %{buildroot}
 %{_includedir}/Q*Mapbox*
 %{_includedir}/qmapbox*
 %{_libdir}/libQMapboxGL.so
-%{_libdir}/cmake/qmapboxgl
+%{_libdir}/cmake/QMapboxGL
 
 %changelog
 * Sun Dec 5 2021 rinigus <rinigus.git@gmail.com> - 2.0.0-1
