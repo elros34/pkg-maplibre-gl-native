@@ -47,7 +47,7 @@ This package contains the development headers for %{name}.
 %patch2 -p1
 
 %build
-%cmake -DMBGL_WITH_QT=ON -DMBGL_WITH_WERROR=OFF -DCMAKE_INSTALL_PREFIX:PATH=/usr -DMBGL_WITH_QT_HEADLESS=OFF -DMBGL_QT_LIBRARY_ONLY=ON .
+%cmake -DMBGL_WITH_QT=ON -DMBGL_WITH_WERROR=OFF -DCMAKE_INSTALL_PREFIX:PATH=/usr -DMBGL_WITH_QT_HEADLESS=OFF -DMBGL_QT_LIBRARY_ONLY=ON -DMBGL_QT_STATIC=ON .
 %{__make} %{?_smp_mflags}
 
 %install
@@ -64,13 +64,13 @@ mkdir -p %{buildroot}
 
 %files
 %defattr(-, root, root, 0755)
-%{_libdir}/libQMapboxGL.so.*
+#%{_libdir}/libQMapboxGL.so.*
 
 %files devel
 %{_includedir}/mbgl
 %{_includedir}/Q*Mapbox*
 %{_includedir}/qmapbox*
-%{_libdir}/libQMapboxGL.so
+%{_libdir}/libQMapboxGL.a
 %{_libdir}/cmake/QMapboxGL
 
 %changelog
