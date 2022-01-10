@@ -64,14 +64,14 @@ mkdir -p %{buildroot}
 
 %files
 %defattr(-, root, root, 0755)
-#%{_libdir}/libQMapboxGL.so.*
+%{_libdir}/libQMapboxGL.so.*
 
 %files devel
 %{_includedir}/mbgl
 %{_includedir}/Q*Mapbox*
 %{_includedir}/qmapbox*
-%{_libdir}/libQMapboxGL.a
-#%{_libdir}/libQMapboxGL.so
+#%{_libdir}/libQMapboxGL.a
+%{_libdir}/libQMapboxGL.so
 %{_libdir}/cmake/QMapboxGL
 
 %changelog
