@@ -1,8 +1,8 @@
 Summary: Maplibre GL Native Qt version
 Name: qmaplibregl
-Version: 2.0.0
+Version: 0.0.220220
 Release: 1%{?dist}
-License: Open Source
+License: BSD-2-Clause
 Group: Libraries/Geosciences
 URL: https://github.com/maplibre/maplibre-gl-native
 
@@ -30,9 +30,18 @@ Requires(postun): /sbin/ldconfig
 %description
 A library for embedding interactive, customizable vector maps into native applications on multiple platforms.
 It takes stylesheets that conform to the Mapbox Style Specification, applies them to vector tiles that
-conform to the Mapbox Vector Tile Specification, and renders them using OpenGL. Mapbox GL JS is the WebGL-based
-counterpart, designed for use on the Web.
+conform to the Mapbox Vector Tile Specification, and renders them using OpenGL.
 
+MapLibre GL Native is a community led fork derived from mapbox-gl-native.
+
+PackageName: Maplibre GL Native Qt
+PackagerName: rinigus
+Categories:
+  - Library
+  - Maps
+  - Science
+Icon: https://raw.githubusercontent.com/maplibre/maplibre.github.io/main/img/maplibre-logo-dark.svg
+  
 %package devel
 Summary:        Development files for %{name}
 License:        Open Source
