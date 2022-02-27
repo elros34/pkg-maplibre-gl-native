@@ -23,6 +23,7 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(icu-uc)
 Conflicts: qmapboxgl
+Obsoletes: qmapboxgl
 
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
