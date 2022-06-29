@@ -74,15 +74,15 @@ mkdir -p %{buildroot}
 
 %files
 %defattr(-, root, root, 0755)
-%{_libdir}/libQMapboxGL.so.*
+%{_libdir}/libQMapLibreGL.so.*
 
 %files devel
 %{_includedir}/mbgl
-%{_includedir}/Q*Mapbox*
-%{_includedir}/qmapbox*
+%{_includedir}/QMapLibre*
+%{_includedir}/qmaplibre*
 #%{_libdir}/libQMapboxGL.a
-%{_libdir}/libQMapboxGL.so
-%{_libdir}/cmake/QMapboxGL
+%{_libdir}/libQMapLibreGL.so
+%{_libdir}/cmake/QMapLibreGL
 
 %changelog
 * Sun Dec 5 2021 rinigus <rinigus.git@gmail.com> - 2.0.0-1
