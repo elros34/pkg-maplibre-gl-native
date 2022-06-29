@@ -28,7 +28,7 @@ index 6303ae758..d2f7abe72 100644
          ${PROJECT_SOURCE_DIR}/platform/qt/src/mbgl/timer.cpp
          ${PROJECT_SOURCE_DIR}/platform/qt/src/mbgl/timer_impl.hpp
          ${PROJECT_SOURCE_DIR}/platform/qt/src/mbgl/utf.cpp
-+        ${PROJECT_SOURCE_DIR}/platform/default/src/mbgl/storage/http_file_source.cpp>
++        ${PROJECT_SOURCE_DIR}/platform/default/src/mbgl/storage/http_file_source.cpp
  )
  
  target_compile_definitions(
