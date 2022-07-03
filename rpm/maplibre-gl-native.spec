@@ -78,8 +78,7 @@ mkdir -p %{buildroot}
 
 %files devel
 %{_includedir}/mbgl
-%{_includedir}/QMapLibre*
-%{_includedir}/qmaplibre*
+%{_includedir}/QMapLibreGL
 #%{_libdir}/libQMapboxGL.a
 %{_libdir}/libQMapLibreGL.so
 %{_libdir}/cmake/QMapLibreGL
