@@ -1,6 +1,6 @@
 Summary: Maplibre GL Native Qt version
 Name: qmaplibregl
-Version: 2.1.0.0
+Version: 2.1.0+git.23.12.28.0
 Release: 1%{?dist}
 License: BSD-2-Clause
 Group: Libraries/Geosciences
