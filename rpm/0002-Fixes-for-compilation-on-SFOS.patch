@@ -1,0 +1,39 @@
+From ea23b6964d1710e7c13d293cc36c7c92c512770b Mon Sep 17 00:00:00 2001
+From: Rinigus <rinigus.git@gmail.com>
+Date: Mon, 1 Jan 2024 14:11:26 +0200
+Subject: [PATCH] Fixes for compilation on SFOS
+
+---
+ src/core/map.cpp   | 2 +-
+ src/core/types.hpp | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/core/map.cpp b/src/core/map.cpp
+index d3ff668..6235622 100644
+--- a/src/core/map.cpp
++++ b/src/core/map.cpp
+@@ -847,7 +847,7 @@ QPointF Map::pixelForCoordinate(const Coordinate &coordinate_) const {
+     const mbgl::ScreenCoordinate pixel = d_ptr->mapObj->pixelForLatLng(
+         mbgl::LatLng{coordinate_.first, coordinate_.second});
+ 
+-    return {pixel.x, pixel.y};
++    return {(qreal)pixel.x, (qreal)pixel.y};
+ }
+ 
+ /*!
+diff --git a/src/core/types.hpp b/src/core/types.hpp
+index fd346da..4a82730 100644
+--- a/src/core/types.hpp
++++ b/src/core/types.hpp
+@@ -42,7 +42,7 @@ struct Q_MAPLIBRE_CORE_EXPORT Style {
+         CustomMap = 100
+     };
+ 
+-    explicit Style(QString url_, QString name_ = QString())
++    explicit Style(QString url_ = QString(), QString name_ = QString())
+         : url(std::move(url_)),
+           name(std::move(name_)) {}
+ 
+-- 
+2.41.0
+

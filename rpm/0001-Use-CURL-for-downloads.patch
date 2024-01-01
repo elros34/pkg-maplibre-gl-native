@@ -1,0 +1,37 @@
+From 41c947eb608ecc6f79adeef84615e3dcdc9cede8 Mon Sep 17 00:00:00 2001
+From: Rinigus <rinigus.git@gmail.com>
+Date: Mon, 1 Jan 2024 11:58:58 +0200
+Subject: [PATCH] Use CURL for downloads
+
+As Qt 5.6 does not allow to download tiles offline from localhost,
+replace qt http with curl implementation
+---
+ vendor/maplibre-native/platform/qt/qt.cmake | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/vendor/maplibre-native/platform/qt/qt.cmake b/vendor/maplibre-native/platform/qt/qt.cmake
+index f14e864cd..ab6a9d08d 100644
+--- a/vendor/maplibre-native/platform/qt/qt.cmake
++++ b/vendor/maplibre-native/platform/qt/qt.cmake
+@@ -87,10 +87,6 @@ target_sources(
+         ${PROJECT_SOURCE_DIR}/platform/qt/src/mbgl/async_task_impl.hpp
+         ${PROJECT_SOURCE_DIR}/platform/qt/src/mbgl/gl_functions.cpp
+         ${PROJECT_SOURCE_DIR}/platform/qt/src/mbgl/headless_backend_qt.cpp
+-        ${PROJECT_SOURCE_DIR}/platform/qt/src/mbgl/http_file_source.cpp
+-        ${PROJECT_SOURCE_DIR}/platform/qt/src/mbgl/http_file_source.hpp
+-        ${PROJECT_SOURCE_DIR}/platform/qt/src/mbgl/http_request.cpp
+-        ${PROJECT_SOURCE_DIR}/platform/qt/src/mbgl/http_request.hpp
+         ${PROJECT_SOURCE_DIR}/platform/qt/src/mbgl/image.cpp
+         ${PROJECT_SOURCE_DIR}/platform/qt/src/mbgl/number_format.cpp
+         ${PROJECT_SOURCE_DIR}/platform/qt/src/mbgl/local_glyph_rasterizer.cpp
+@@ -108,6 +104,7 @@ target_sources(
+         ${PROJECT_SOURCE_DIR}/platform/qt/src/utils/renderer_observer.hpp
+         ${PROJECT_SOURCE_DIR}/platform/qt/src/utils/scheduler.cpp
+         ${PROJECT_SOURCE_DIR}/platform/qt/src/utils/scheduler.hpp
++        ${PROJECT_SOURCE_DIR}/platform/default/src/mbgl/storage/http_file_source.cpp
+ )
+ 
+ target_compile_definitions(
+-- 
+2.41.0
+

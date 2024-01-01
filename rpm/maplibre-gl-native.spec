@@ -1,14 +1,14 @@
 Summary: Maplibre GL Native Qt version
 Name: qmaplibregl
-Version: 2.0.1.0
+Version: 2.1.0.0
 Release: 1%{?dist}
 License: BSD-2-Clause
 Group: Libraries/Geosciences
 URL: https://github.com/maplibre/maplibre-gl-native
 
 Source: %{name}-%{version}.tar.gz
-Patch1: 0001-Switch-to-CURL-for-downloads.patch
-Patch2: 0002-Add-long-int-to-toString.patch
+Patch1: 0001-Use-CURL-for-downloads.patch
+Patch2: 0002-Fixes-for-compilation-on-SFOS.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
@@ -42,7 +42,7 @@ Categories:
   - Maps
   - Science
 Icon: https://raw.githubusercontent.com/maplibre/maplibre.github.io/main/img/maplibre-logo-dark.svg
-  
+
 %package devel
 Summary:        Development files for %{name}
 License:        Open Source
@@ -52,12 +52,12 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 This package contains the development headers for %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}/maplibre-gl-native
+%setup -q -n %{name}-%{version}/maplibre-native-qt
 %patch1 -p1
 %patch2 -p1
 
 %build
-%cmake -DMBGL_WITH_QT=ON -DMBGL_WITH_WERROR=OFF -DCMAKE_INSTALL_PREFIX:PATH=/usr -DMBGL_QT_WITH_HEADLESS=OFF -DMBGL_QT_LIBRARY_ONLY=ON -DMBGL_QT_STATIC=OFF -DMBGL_QT_WITH_INTERNAL_ICU=ON .
+%cmake -DMLN_QT_WITH_WIDGETS=OFF -DMLN_QT_WITH_LOCATION=OFF -DCMAKE_INSTALL_PREFIX:PATH=/usr -DMLN_QT_WITH_INTERNAL_ICU=ON .
 %{__make} %{?_smp_mflags}
 
 %install
@@ -74,14 +74,14 @@ mkdir -p %{buildroot}
 
 %files
 %defattr(-, root, root, 0755)
-%{_libdir}/libQMapLibreGL.so.*
+%{_libdir}/libQMapLibre.so.*
 
 %files devel
 %{_includedir}/mbgl
-%{_includedir}/QMapLibreGL
-#%{_libdir}/libQMapboxGL.a
-%{_libdir}/libQMapLibreGL.so
-%{_libdir}/cmake/QMapLibreGL
+%{_includedir}/QMapLibre
+#{_libdir}/libQMapbox.a
+%{_libdir}/libQMapLibre.so
+%{_libdir}/cmake/QMapLibre
 
 %changelog
 * Sun Dec 5 2021 rinigus <rinigus.git@gmail.com> - 2.0.0-1
