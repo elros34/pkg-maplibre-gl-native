@@ -55,7 +55,14 @@ This package contains the development headers for %{name}.
 %patch2 -p1
 
 %build
-%cmake -DMLN_QT_WITH_WIDGETS=OFF -DMLN_QT_WITH_LOCATION=OFF -DCMAKE_INSTALL_PREFIX:PATH=/usr -DMLN_QT_WITH_INTERNAL_ICU=ON .
+%cmake \
+  -DMLN_QT_WITH_WIDGETS=OFF \
+  -DMLN_QT_WITH_LOCATION=OFF \
+  -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+  -DMLN_QT_WITH_INTERNAL_ICU=ON \
+  -DMLN_WITH_WERROR=OFF \
+  .
+
 %{__make} %{?_smp_mflags}
 
 %install
