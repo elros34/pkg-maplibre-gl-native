@@ -1,39 +1,25 @@
-From ea23b6964d1710e7c13d293cc36c7c92c512770b Mon Sep 17 00:00:00 2001
+From a43eb157e312f3b0294ceddf943aacfdd21a6202 Mon Sep 17 00:00:00 2001
 From: Rinigus <rinigus.git@gmail.com>
-Date: Mon, 1 Jan 2024 14:11:26 +0200
-Subject: [PATCH] Fixes for compilation on SFOS
+Date: Sun, 20 Oct 2024 16:07:02 +0300
+Subject: [PATCH] [SFOS] Fix type error
 
 ---
- src/core/map.cpp   | 2 +-
- src/core/types.hpp | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ src/core/map.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/core/map.cpp b/src/core/map.cpp
-index d3ff668..6235622 100644
+index d8e6abd..a979dac 100644
 --- a/src/core/map.cpp
 +++ b/src/core/map.cpp
-@@ -847,7 +847,7 @@ QPointF Map::pixelForCoordinate(const Coordinate &coordinate_) const {
+@@ -1070,7 +1070,7 @@ QPointF Map::pixelForCoordinate(const Coordinate &coordinate) const {
      const mbgl::ScreenCoordinate pixel = d_ptr->mapObj->pixelForLatLng(
-         mbgl::LatLng{coordinate_.first, coordinate_.second});
+         mbgl::LatLng{coordinate.first, coordinate.second});
  
 -    return {pixel.x, pixel.y};
 +    return {(qreal)pixel.x, (qreal)pixel.y};
  }
  
  /*!
-diff --git a/src/core/types.hpp b/src/core/types.hpp
-index fd346da..4a82730 100644
---- a/src/core/types.hpp
-+++ b/src/core/types.hpp
-@@ -42,7 +42,7 @@ struct Q_MAPLIBRE_CORE_EXPORT Style {
-         CustomMap = 100
-     };
- 
--    explicit Style(QString url_, QString name_ = QString())
-+    explicit Style(QString url_ = QString(), QString name_ = QString())
-         : url(std::move(url_)),
-           name(std::move(name_)) {}
- 
 -- 
-2.41.0
+2.45.2
 

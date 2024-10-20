@@ -1,10 +1,10 @@
 Summary: Maplibre GL Native Qt version
 Name: qmaplibregl
-Version: 2.1.0+git.23.12.28.0
+Version: 3.0.0
 Release: 1%{?dist}
 License: BSD-2-Clause
 Group: Libraries/Geosciences
-URL: https://github.com/maplibre/maplibre-gl-native
+URL: https://github.com/maplibre/maplibre-gl-qt
 
 Source: %{name}-%{version}.tar.gz
 Patch1: 0001-Use-CURL-for-downloads.patch
@@ -22,8 +22,6 @@ BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(icu-uc)
-Conflicts: qmapboxgl
-Obsoletes: qmapboxgl
 
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
@@ -63,7 +61,7 @@ This package contains the development headers for %{name}.
 %install
 %{__rm} -rf %{buildroot}
 mkdir -p %{buildroot}
-%{__make} install DESTDIR=%{buildroot}
+%make_install
 
 %clean
 %{__rm} -rf %{buildroot}
