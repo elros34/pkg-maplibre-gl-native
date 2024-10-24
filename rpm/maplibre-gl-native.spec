@@ -51,7 +51,7 @@ This package contains the development headers for %{name}.
 
 %prep
 %setup -q -n %{name}-%{version}/maplibre-native-qt
-%patch1 -p1
+
 %patch2 -p1
 
 %build
