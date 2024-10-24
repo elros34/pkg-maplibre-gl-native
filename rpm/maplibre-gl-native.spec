@@ -9,6 +9,7 @@ URL: https://github.com/maplibre/maplibre-gl-qt
 Source: %{name}-%{version}.tar.gz
 Patch1: 0001-Use-CURL-for-downloads.patch
 Patch2: 0002-Fixes-for-compilation-on-SFOS.patch
+Patch3: 0003-CURL_POLL_INOUT-action-handle-added-2365.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
@@ -53,6 +54,10 @@ This package contains the development headers for %{name}.
 %setup -q -n %{name}-%{version}/maplibre-native-qt
 %patch1 -p1
 %patch2 -p1
+
+pushd vendor/maplibre-native
+%patch3 -p1
+popd
 
 %build
 %cmake \

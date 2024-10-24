@@ -1,0 +1,30 @@
+From c6e6a8966155cf56837f62b204a1f3354dad42e7 Mon Sep 17 00:00:00 2001
+From: glebpinigin <84579745+glebpinigin@users.noreply.github.com>
+Date: Tue, 7 May 2024 15:52:37 +0300
+Subject: [PATCH] CURL_POLL_INOUT action handle added (#2365)
+
+Co-authored-by: glebpinigin <glebpinigin@example.com>
+---
+ platform/default/src/mbgl/storage/http_file_source.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/platform/default/src/mbgl/storage/http_file_source.cpp b/platform/default/src/mbgl/storage/http_file_source.cpp
+index 4425bd1eed..841e525cf4 100644
+--- a/platform/default/src/mbgl/storage/http_file_source.cpp
++++ b/platform/default/src/mbgl/storage/http_file_source.cpp
+@@ -204,6 +204,12 @@ int HTTPFileSource::Impl::handleSocket(
+                 static_cast<int>(s), util::RunLoop::Event::Write, std::bind(&Impl::perform, context, _1, _2));
+             break;
+         }
++        case CURL_POLL_INOUT: {
++            using namespace std::placeholders;
++            util::RunLoop::Get()->addWatch(
++                static_cast<int>(s), util::RunLoop::Event::ReadWrite, std::bind(&Impl::perform, context, _1, _2));
++            break;
++        }
+         case CURL_POLL_REMOVE:
+             util::RunLoop::Get()->removeWatch(static_cast<int>(s));
+             break;
+-- 
+2.45.2
+
