@@ -1,3 +1,4 @@
 [submodule "maplibre-native-qt"]
 	path = maplibre-native-qt
 	url = https://github.com/elros34/maplibre-native-qt.git
+	branch = debug
